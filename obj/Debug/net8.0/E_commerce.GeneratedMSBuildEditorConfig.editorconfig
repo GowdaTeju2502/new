@@ -9,39 +9,119 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = E_commerce
 build_property.RootNamespace = E_commerce
-build_property.ProjectDir = C:\Users\user\source\repos\E_commerce\
+build_property.ProjectDir = D:\ECommerce\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\user\source\repos\E_commerce
+build_property.MSBuildProjectDirectory = D:\ECommerce
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/user/source/repos/E_commerce/Pages/Error.cshtml]
+[D:/ECommerce/Pages/Admin/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Admin/AdminSellerApprovalPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRtaW5TZWxsZXJBcHByb3ZhbFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/CartPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ2FydFBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/CheckoutPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ2hlY2tvdXRQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/CustomerLoginPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJMb2dpblBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/CustomerRegisterPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJSZWdpc3RlclBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/CustomerViewPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJWaWV3UGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/LogoutPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcTG9nb3V0UGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/OrderConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcT3JkZXJDb25maXJtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/Orders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/Reviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcUmV2aWV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Customer/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/E_commerce/Pages/Index.cshtml]
+[D:/ECommerce/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/E_commerce/Pages/Privacy.cshtml]
+[D:/ECommerce/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/E_commerce/Pages/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[D:/ECommerce/Pages/Seller/SellerLoginPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbGVyXFNlbGxlckxvZ2luUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/E_commerce/Pages/_ViewImports.cshtml]
+[D:/ECommerce/Pages/Seller/SellerOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbGVyXFNlbGxlck9yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Seller/SellerProductDisplay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbGVyXFNlbGxlclByb2R1Y3REaXNwbGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Seller/SellerProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbGVyXFNlbGxlclByb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Seller/SellerRegistrationPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbGVyXFNlbGxlclJlZ2lzdHJhdGlvblBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Seller/SellerWaitingPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbGVyXFNlbGxlcldhaXRpbmdQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/Seller/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbGVyXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ECommerce/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/E_commerce/Pages/_ViewStart.cshtml]
+[D:/ECommerce/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/user/source/repos/E_commerce/Pages/Shared/_Layout.cshtml]
+[D:/ECommerce/Pages/Shared/_CustomerHomePageLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9DdXN0b21lckhvbWVQYWdlTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-e274txo12y
+
+[D:/ECommerce/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-vkie8qdes2
+
+[D:/ECommerce/Pages/Shared/_SellerRegistrationPageLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9TZWxsZXJSZWdpc3RyYXRpb25QYWdlTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-a1nrky9bwv

@@ -30,21 +30,44 @@ namespace E_commerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cart_Id"));
 
-                    b.Property<int>("Product_Id")
+                    b.Property<string>("Customer_Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Customer_Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("Product_Price")
+                    b.HasKey("Cart_Id");
+
+                    b.HasIndex("Customer_Id");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("E_commerce.Database.Entity.CartItem", b =>
+                {
+                    b.Property<int>("CartItem_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartItem_Id"));
+
+                    b.Property<int>("Cart_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Product_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Total_Amount")
-                        .HasColumnType("int");
+                    b.HasKey("CartItem_Id");
 
-                    b.HasKey("Cart_Id");
+                    b.HasIndex("Cart_Id");
 
-                    b.ToTable("Carts");
+                    b.HasIndex("Product_Id");
+
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("E_commerce.Database.Entity.Customer", b =>
@@ -120,7 +143,18 @@ namespace E_commerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Product_Id"));
 
+                    b.Property<int>("Battery_capacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Operating_System")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -135,7 +169,19 @@ namespace E_commerce.Migrations
                     b.Property<int>("Product_Price")
                         .HasColumnType("int");
 
+                    b.Property<int>("Product_Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RAM")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ROM")
+                        .HasColumnType("int");
+
                     b.Property<int>("Ratings")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seller_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Seller_Name")
@@ -172,7 +218,40 @@ namespace E_commerce.Migrations
 
                     b.HasKey("Order_Id");
 
+                    b.HasIndex("Customer_Id");
+
+                    b.HasIndex("Product_Id");
+
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("E_commerce.Database.Entity.Review", b =>
+                {
+                    b.Property<int>("Review_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Review_Id"));
+
+                    b.Property<int>("Customer_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Product_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Review_Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Review_Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Review_Id");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("E_commerce.Database.Entity.Seller", b =>
@@ -182,6 +261,9 @@ namespace E_commerce.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Seller_Id"));
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Seller_Address")
                         .IsRequired()
@@ -234,6 +316,60 @@ namespace E_commerce.Migrations
                     b.HasKey("Seller_Id");
 
                     b.ToTable("Sellers");
+                });
+
+            modelBuilder.Entity("E_commerce.Database.Entity.Cart", b =>
+                {
+                    b.HasOne("E_commerce.Database.Entity.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("Customer_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("E_commerce.Database.Entity.CartItem", b =>
+                {
+                    b.HasOne("E_commerce.Database.Entity.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("Cart_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_commerce.Database.Entity.Electronic_Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("E_commerce.Database.Entity.Order", b =>
+                {
+                    b.HasOne("E_commerce.Database.Entity.Customer", "Customers")
+                        .WithMany()
+                        .HasForeignKey("Customer_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_commerce.Database.Entity.Electronic_Product", "product")
+                        .WithMany()
+                        .HasForeignKey("Product_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customers");
+
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("E_commerce.Database.Entity.Cart", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 #pragma warning restore 612, 618
         }

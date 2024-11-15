@@ -1,0 +1,148 @@
+﻿@page
+@model E_commerce.Database.CustomerViewPageModel
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar Section -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <form method="get" asp-page="/Customer/CartPage">
+                            <button type="submit" class="btn btn-primary btn-block mt-3"> View Cart</button>
+                        </form>
+                        <form method="get" asp-page="/Customer/Reviews">
+                            <button type="submit" class="btn btn-primary btn-block mt-3">Reviews</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Customer/OrderConfirmation">
+                            Order History
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Section -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-4">
+            <div class="row">
+                @if (Model.Productlist != null && Model.Productlist.Count > 0)
+                {
+                    foreach (var product in Model.Productlist)
+                    {
+                        // Calculate the average rating for the current product
+                        var productReviews = Model.Reviewlist.Where(r => r.Product_Id == product.Product_Id);
+                        var averageRating = productReviews.Any() ? productReviews.Average(r => r.Rating) : 0;
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <!-- Display Product Image -->
+                                <img src="~/@product.ImagePath" alt="@product.Product_Name" class="card-img-top" style="height: auto; object-fit: cover;" />
+
+                                <div class="card-body">
+                                    <h5 class="card-title">@product.Product_Name</h5>
+                                    <p class="card-text">@product.Product_Description</p>
+
+                                    <!-- Display average rating with star rating component -->
+                                    <div>
+                                        <strong>Average Rating:</strong>
+                                        <div class="rating">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                @if (i <= Math.Floor(averageRating))
+                                                {
+                                                    <span class="fa fa-star checked"></span> <!-- Full star -->
+                                                }
+                                                else if (i - 0.5 <= averageRating)
+                                                {
+                                                    <span class="fa fa-star-half-alt checked"></span> <!-- Half star -->
+                                                }
+                                                else
+                                                {
+                                                    <span class="fa fa-star"></span> <!-- Empty star -->
+                                                }
+                                            }
+                                            <span> (@averageRating.ToString("0.0"))</span> <!-- Display numeric rating -->
+                                        </div>
+                                    </div>
+
+                                    <p><strong>Price:</strong> $@product.Product_Price</p>
+                                    <p><strong>Quantity:</strong> @product.Product_Quantity</p>
+                                    <p><strong>Battery Capacity:</strong> @product.Battery_capacity mAh</p>
+                                    <p><strong>RAM:</strong> @product.RAM GB</p>
+                                    <p><strong>ROM:</strong> @product.ROM GB</p>
+                                    <p><strong>Operating System:</strong> @product.Operating_System</p>
+                                    <p><strong>Brand:</strong> @product.Brand</p>
+                                </div>
+
+                                <!-- Show "Out of Stock" if quantity is 0 and disable Add to Cart button -->
+                                @if (product.Product_Quantity == 0)
+                                {
+                                    <p class="text-danger"><strong>Out of Stock</strong></p>
+                                    <button class="btn btn-primary btn-block" disabled>Add to Cart</button>
+                                }
+                                else
+                                {
+                                    <!-- Add to Cart button when stock is available -->
+                                    <form method="post" asp-page="/Customer/CartPage" asp-route-productId="@product.Product_Id" asp-route-quantity="@product.Product_Quantity" asp-page-handler="AddToCart">
+                                        <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+                                    </form>
+                                }
+
+                                <!-- Display Reviews for the Product -->
+                                <div>
+                                    @if (Model.Reviewlist != null && Model.Reviewlist.Count > 0)
+                                    {
+                                        var productReviewsList = Model.Reviewlist.Where(r => r.Product_Id == product.Product_Id).ToList();
+
+                                        if (productReviewsList.Count > 0)
+                                        {
+                                            foreach (var review in productReviewsList)
+                                            {
+                                                <p><strong>Review:</strong> @review.Review_Text</p>
+                                                <p><strong>Ratings:</strong> @review.Rating</p>
+                                                <p><strong>Reviewed On:</strong> @review.Review_Date.ToString("yyyy-MM-dd")</p>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <p>No reviews for this product yet.</p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>No reviews available.</p>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12">
+                        <p>No products available at the moment.</p>
+                    </div>
+                }
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- CSS for star rating -->
+<style>
+    .fa-star {
+        font-size: 1.25em;
+        color: #ddd;
+    }
+
+        .fa-star.checked {
+            color: #ffc107;
+        }
+
+    .fa-star-half-alt.checked {
+        color: #ffc107;
+    }
+</style>

@@ -1,0 +1,191 @@
+﻿@page
+@model E_commerce.Database.CartPageModel
+
+@if (Model.CartItems != null && Model.CartItems.Count > 0)
+{
+    <ul class="list-group">
+        @foreach (var item in Model.CartItems)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <!-- Display Product Image -->
+                <div class="d-flex align-items-center">
+                    <img src="@Url.Content($"~/{item.Product.ImagePath}")" alt="@item.Product.Product_Name" class="product-image" />
+                    <div class="ms-3">
+                        <h5>@item.Product.Product_Name</h5>
+                        <p class="text-muted">Seller: @item.Product.Seller_Name</p>
+                    </div>
+                </div>
+
+                <!-- Quantity Input (with max quantity set to the product's available stock) -->
+                <form method="post" asp-page-handler="UpdateQuantity" asp-route-cartItemId="@item.CartItem_Id" class="d-flex align-items-center">
+                    <label for="quantity-@item.CartItem_Id" class="me-2">Quantity:</label>
+                    <input type="number" id="quantity-@item.CartItem_Id" name="quantity"
+                           value="@item.Quantity" min="1" max="@item.Product.Product_Quantity"
+                           style="width: 70px;" class="form-control quantity-input" required />
+
+                    <!-- Submit button to update quantity -->
+                    <button type="submit" class="btn btn-info btn-sm ms-2">Update</button>
+                </form>
+
+                <!-- Remove item from the cart -->
+                <form method="post" asp-page-handler="RemoveFromCart" asp-route-cartItemId="@item.CartItem_Id" class="ms-3">
+                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                </form>
+
+                <!-- Display price for this item -->
+                <div>
+                    <p class="fw-bold">$@item.Quantity x @item.Product.Product_Price = $@(item.Quantity * item.Product.Product_Price)</p>
+                </div>
+            </li>
+        }
+    </ul>
+
+    <!-- Display total price for all items -->
+    <p class="fw-bold mt-3">Total: $@Model.CartItems.Sum(i => i.Quantity * i.Product.Product_Price)</p>
+
+    <!-- Button to Proceed to Checkout -->
+    <form method="get" asp-page="/Customer/CheckoutPage">
+        <button type="submit" class="btn btn-success">Proceed to Checkout</button>
+    </form>
+}
+else
+{
+    <p>Your cart is empty.</p>
+}
+
+
+<style>
+    /* General body and page styling */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fafafa; /* Light gray background for a clean feel */
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Cart item styling */
+    .list-group-item {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+
+        .list-group-item:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Product image styling */
+    .product-image {
+        height: 80px;
+        width: auto;
+        max-width: 80px;
+        border-radius: 6px;
+        object-fit: cover;
+    }
+
+    /* Title and seller name styling */
+    .ms-3 {
+        margin-left: 15px;
+    }
+
+    h5 {
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .text-muted {
+        color: #777;
+        font-size: 14px;
+    }
+
+    /* Quantity input styling */
+    .quantity-input {
+        width: 70px;
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+
+    /* Buttons styling */
+    .btn {
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .btn-info {
+        background-color: #4CAF50; /* Bright Green for update button */
+        border: none;
+        color: white;
+        padding: 6px 12px;
+    }
+
+        .btn-info:hover {
+            background-color: #45a049; /* Darker Green when hovered */
+        }
+
+    .btn-danger {
+        background-color: #FF6347; /* Tomato Red for remove button */
+        border: none;
+        color: white;
+        padding: 6px 12px;
+    }
+
+        .btn-danger:hover {
+            background-color: #e55347; /* Darker Red when hovered */
+        }
+
+    .btn-success {
+        background-color: #ff9800; /* Bright Orange for checkout button */
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 8px 16px;
+    }
+
+        .btn-success:hover {
+            background-color: #e68900; /* Darker Orange when hovered */
+        }
+
+    /* Price styling */
+    .fw-bold {
+        font-weight: bold;
+    }
+
+        /* Total price styling */
+        .fw-bold.mt-3 {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+    /* Form styling */
+    form {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    /* Alert Message styling */
+    .alert {
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        border-left: 5px solid #ff9800; /* Orange left border for emphasis */
+    }
+</style>
+
+
+

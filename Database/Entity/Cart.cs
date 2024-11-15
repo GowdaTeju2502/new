@@ -1,21 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Numerics;
+using System.Collections.Generic;
 
 namespace E_commerce.Database.Entity
 {
     public class Cart
     {
-        [Key] 
+        [Key]
         public int Cart_Id { get; set; }
-        [Required]
-        public int Product_Id {  get; set; }
-        [Required]
-        public int Product_Price { get; set; }
-        [Required]
-        public int Total_Amount { get; set; }
-        [Required]
 
-        public int Quantity {  get; set; }
+        // Foreign Key to the Customer
+        [Required]
+        public string Customer_Email { get; set; }
+        [Required]
+        public int Customer_Id { get; set; }
+        public Customer Customer { get; set; }
 
+        // Navigation property to CartItems
+        public List<CartItem> CartItems { get; set; } = new List<CartItem>();
     }
+
+
+
 }
+

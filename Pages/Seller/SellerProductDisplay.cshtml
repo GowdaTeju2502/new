@@ -1,0 +1,63 @@
+﻿@page
+@model E_commerce.Database.Entity.SellerProductDisplayModel
+@{
+    ViewData["Title"] = "DisplayPage";
+}
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar Section -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="position-sticky">
+                <h5>Seller Menu</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-page="/Seller/SellerProducts">
+                            Add Product
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Section -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-4">
+            <h2>Product List</h2>
+            <div class="row">
+                @if (Model.Productlist != null && Model.Productlist.Count > 0)
+                {
+                    foreach (var product in Model.Productlist)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <!-- Display Product Image -->
+                                <img src="~/@product.ImagePath" alt="@product.Product_Name" class="card-img-top" style="height: auto; object-fit: cover;" />
+
+                                <div class="card-body">
+                                    <h5 class="card-title">@product.Product_Name</h5>
+                                    <p class="card-text">@product.Product_Description</p>
+                                    <p><strong>Price:</strong> $@product.Product_Price</p>
+                                    <p><strong>Quantity:</strong> @product.Product_Quantity</p>
+                                    <p><strong>Ratings:</strong> @product.Ratings</p>
+                                    <p><strong>Battery Capacity:</strong> @product.Battery_capacity mAh</p>
+                                    <p><strong>RAM:</strong> @product.RAM GB</p>
+                                    <p><strong>ROM:</strong> @product.ROM GB</p>
+                                    <p><strong>Operating System:</strong> @product.Operating_System</p>
+                                    <p><strong>Brand:</strong> @product.Brand</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12">
+                        <p>No products available at the moment.</p>
+                    </div>
+                }
+            </div>
+        </main>
+    </div>
+</div>

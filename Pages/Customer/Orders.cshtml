@@ -1,0 +1,39 @@
+﻿@page
+@model E_commerce.Database.Entity.OrdersPageModel
+
+<h2>My Orders</h2>
+
+@if (Model.Orders.Any())
+{
+    <div class="row">
+        @foreach (var order in Model.Orders)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h5 class="card-title">@order.product.Product_Name</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Quantity:</strong> @order.Ordered_Quantity</p>
+                        <p><strong>Date:</strong> @order.Ordered_Date.ToString("MM/dd/yyyy")</p>
+                        <p><strong>Price:</strong> $@((order.Ordered_Quantity * order.product.Product_Price).ToString("0.00"))</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <strong>Seller:</strong> @order.product.Seller_Name
+                    </div>
+                    <div class="card-body">
+                        <!-- Add Reviews Button -->
+                        <a href="/Customer/Reviews?orderedId=@order.Order_Id"  class="btn btn-primary">Add Review</a>
+
+                        <!-- Add Ratings Button -->
+                        <a href="/Ratings/AddRating/@order.Order_Id"  class=" btn btn-warning">Add Rating</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>You have no orders yet.</p>
+}

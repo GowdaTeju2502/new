@@ -1,0 +1,69 @@
+﻿@page
+@model E_commerce.Database.Entity.OrderConfirmationModel
+
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<!-- Confirmation Box -->
+<div class="confirmation-box">
+    <h2>Order Confirmation</h2>
+    <p>Your order has been successfully placed! You can now view your previous orders.</p>
+
+    <!-- Button to View Orders -->
+    <form method="get" asp-page="/Customer/Orders">
+        <button type="submit" class="btn btn-contrast">View My Orders</button>
+    </form>
+</div>
+<style>
+
+    .confirmation-box {
+        width: 300px; /* Fixed width */
+        height: 300px; /* Fixed height (square shape) */
+        padding: 20px;
+        background-color: #28a745; /* Green background (for success message) */
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: 0 auto; /* Center the box horizontally */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertically center the content */
+        align-items: center; /* Horizontally center the content */
+        text-align: center;
+        position: relative;
+        top: 150%; /* Vertically center the box */
+        transform: translateY(-50%); /* Adjust the box to be exactly in the center */
+    }
+
+        /* Title and Text */
+        .confirmation-box h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-box p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+    /* Button Styling with Contrast Color */
+    .btn-contrast {
+        background-color: #ffc107; /* Yellow button for contrast */
+        border-color: #ffc107;
+        color: #343a40; /* Dark text color for visibility */
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-contrast:hover {
+            background-color: #e0a800; /* Darker yellow on hover */
+            border-color: #e0a800;
+        }
+</style>
+ 

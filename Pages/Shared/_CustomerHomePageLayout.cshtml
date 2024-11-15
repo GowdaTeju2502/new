@@ -1,0 +1,82 @@
+﻿@using E_commerce.Database.context
+@inject ApplicationDbContext _context
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - E_commerce</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/E_commerce.styles.css" asp-append-version="true" />
+
+        <!-- FontAwesome CDN for star icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-black border-bottom text-light box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-light" asp-area="" asp-page="/Index">E_commerce</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between bg-gradient">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Admin/Adminlogin">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Seller/SellerLoginPage">Seller</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        @if (Context.Session.GetInt32("CustomerId") != null)
+                        {
+                            // Retrieve the CustomerId from session
+                            var customerId = Context.Session.GetInt32("CustomerId");
+
+                            // Fetch the customer from the database using CustomerId
+                            var customer = _context.Customers.FirstOrDefault(c => c.Customer_Id == customerId);
+
+                            if (customer != null)
+                            {
+                            // Display the customer's name if found
+                                <li class="nav-item">
+                                    <span class="navbar-text text-light">Welcome, @customer.Customer_Name</span>
+                                </li>
+                            }
+
+                            <li class="nav-item ms-3">
+                                <form method="post" asp-page="/Customer/LogoutPage" asp-page-handler="Logout">
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-page="/Customer/CustomerLoginPage">SignIn</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

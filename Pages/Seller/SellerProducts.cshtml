@@ -1,0 +1,301 @@
+﻿ @page
+@model E_commerce.Database.Entity.SellerProductsModel
+@{
+}
+
+<div class="container">
+    <!-- Products List Section -->
+    <h3>Your Products</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Product_Name</td>
+                    <td>@product.Product_Price</td>
+                    <td>
+                        <form method="post" asp-page-handler="UpdateQuantity" asp-route-productId="@product.Product_Id">
+                            <input type="number" name="NewQuantity" value="@product.Product_Quantity" min="0" class="form-control" />
+                            <button type="submit" class="btn btn-warning mt-2">Update Quantity</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="/Seller/ProductDetails/@product.Product_Id" class="btn btn-info">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Product Details Form Section -->
+    <div class="row justify-content-center mt-5">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <h5>Seller Menu</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-page="/Seller/SellerProductDisplay">
+                                Products List
+                            </a>
+                            <a class="nav-link" asp-page="/Seller/SellerOrders">
+                                Order History
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="col-md-6 col-lg-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h3 class="text-center text-primary mb-4">Product Details</h3>
+
+                        <form method="post" enctype="multipart/form-data">
+                            <!-- Product Name -->
+                            <div class="mb-3">
+                                <label for="Product_Name" class="form-label">Product Name</label>
+                                <input asp-for="Electronic_Products.Product_Name" id="Product_Name" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Product_Name" class="text-danger"></span>
+                            </div>
+
+                            <!-- Product Description -->
+                            <div class="mb-3">
+                                <label for="Product_Description" class="form-label">Product Description</label>
+                                <textarea asp-for="Electronic_Products.Product_Description" id="Product_Description" class="form-control" rows="3" required></textarea>
+                                <span asp-validation-for="Electronic_Products.Product_Description" class="text-danger"></span>
+                            </div>
+
+                            <!-- Product Price -->
+                            <div class="mb-3">
+                                <label for="Product_Price" class="form-label">Price</label>
+                                <input asp-for="Electronic_Products.Product_Price" id="Product_Price" type="number" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Product_Price" class="text-danger"></span>
+                            </div>
+
+                            <!-- Seller Name -->
+                            <div class="mb-3">
+                                <label for="Seller_Name" class="form-label">Seller Name</label>
+                                <input asp-for="Electronic_Products.Seller_Name" id="Seller_Name" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Seller_Name" class="text-danger"></span>
+                            </div>
+
+                            <!-- Product Quantity -->
+                            <div class="mb-3">
+                                <label for="Product_Quantity" class="form-label">Quantity</label>
+                                <input asp-for="Electronic_Products.Product_Quantity" id="Product_Quantity" type="number" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Product_Quantity" class="text-danger"></span>
+                            </div>
+
+                            <!-- Product Image Upload -->
+                            <div class="mb-3">
+                                <label for="ImageFile" class="form-label">Product Image</label>
+                                <input asp-for="Electronic_Products.ImageFile" id="ImageFile" type="file" class="form-control" />
+                                <span asp-validation-for="Electronic_Products.ImageFile" class="text-danger"></span>
+                            </div>
+
+                            <!-- Product Ratings -->
+                            <div class="mb-3">
+                                <label for="Ratings" class="form-label">Ratings</label>
+                                <input asp-for="Electronic_Products.Ratings" id="Ratings" type="number" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Ratings" class="text-danger"></span>
+                            </div>
+
+                            <!-- Battery Capacity -->
+                            <div class="mb-3">
+                                <label for="Battery_capacity" class="form-label">Battery Capacity (mAh)</label>
+                                <input asp-for="Electronic_Products.Battery_capacity" id="Battery_capacity" type="number" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Battery_capacity" class="text-danger"></span>
+                            </div>
+
+                            <!-- RAM -->
+                            <div class="mb-3">
+                                <label for="RAM" class="form-label">RAM (GB)</label>
+                                <input asp-for="Electronic_Products.RAM" id="RAM" type="number" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.RAM" class="text-danger"></span>
+                            </div>
+
+                            <!-- ROM -->
+                            <div class="mb-3">
+                                <label for="ROM" class="form-label">ROM (GB)</label>
+                                <input asp-for="Electronic_Products.ROM" id="ROM" type="number" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.ROM" class="text-danger"></span>
+                            </div>
+
+                            <!-- Operating System -->
+                            <div class="mb-3">
+                                <label for="Operating_System" class="form-label">Operating System</label>
+                                <input asp-for="Electronic_Products.Operating_System" id="Operating_System" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Operating_System" class="text-danger"></span>
+                            </div>
+
+                            <!-- Brand -->
+                            <div class="mb-3">
+                                <label for="Brand" class="form-label">Brand</label>
+                                <input asp-for="Electronic_Products.Brand" id="Brand" class="form-control" required />
+                                <span asp-validation-for="Electronic_Products.Brand" class="text-danger"></span>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary w-100">Save Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* <style>
+    /* Global Styles */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Container styling */
+    .container {
+        margin-top: 30px;
+    }
+
+    /* Card Styling */
+    .card {
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+        background-color: #f8f9fa;
+        border-right: 1px solid #ddd;
+        padding: 20px;
+    }
+
+    .sidebar h5 {
+        color: #007bff;
+        font-size: 1.25rem;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .nav-link {
+        color: #007bff;
+        font-size: 1rem;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
+
+    .nav-link:hover {
+        background-color: #f1f1f1;
+        color: #0056b3;
+    }
+
+    .nav-link.active {
+        background-color: #007bff;
+        color: white;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    table td form input {
+        width: 60px;
+        border-radius: 4px;
+    }
+
+    table td .btn {
+        border-radius: 5px;
+    }
+
+    /* Form Controls */
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .mb-3 input,
+    .mb-3 textarea {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-warning {
+        background-color: #ff9800;
+        color: white;
+    }
+
+    .btn-warning:hover {
+        background-color: #e68900;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+    }
+
+    /* Additional Spacing & Styling */
+    .text-center {
+        text-align: center;
+    }
+
+    .text-primary {
+        color: #007bff;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style> *@

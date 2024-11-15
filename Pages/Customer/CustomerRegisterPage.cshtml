@@ -1,0 +1,104 @@
+﻿@page
+@model E_commerce.Database.CustomerHomePageModel
+@{
+    ViewData["Title"] = "Sign/LoginPage";
+
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="text-center text-danger mb-4">Registration</h3>
+
+                    <form method="post" asp-page="/Customer/CustomerLoginPage">
+
+
+                        <div class="mb-3">
+                            <label for="Customer_Name" class="form-label">Customer Name</label>
+                            <input asp-for="Customers.Customer_Name" id="Customer_Name" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_Contact" class="form-label">Contact</label>
+                            <input asp-for="Customers.Customer_Contact" id="Customer_Contact" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_Contact" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_Address" class="form-label">Address</label>
+                            <input asp-for="Customers.Customer_Address" id="Customer_Address" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_Address" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_Email" class="form-label">Email</label>
+                            <input asp-for="Customers.Customer_Email" id="Customer_Email" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_Gender" class="form-label">Gender</label>
+                            <select asp-for="Customers.Customer_Gender" class="form-select">
+                                <option value="">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <span asp-validation-for="Customers.Customer_Gender" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_DOB" class="form-label">Date of Birth</label>
+                            <input asp-for="Customers.Customer_DOB" id="Customer_DOB" type="date" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_DOB" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_Password" class="form-label">Password</label>
+                            <input asp-for="Customers.Customer_Password" id="Customer_Password" type="password" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_ConfirmPassword" class="form-label">Confirm Password</label>
+                            <input asp-for="Customers.Customer_ConfirmPassword" id="Customer_ConfirmPassword" type="password" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_State" class="form-label">State</label>
+                            <input asp-for="Customers.Customer_State" id="Customer_State" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_State" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_District" class="form-label">District</label>
+                            <input asp-for="Customers.Customer_District" id="Customer_District" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_District" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_Pincode" class="form-label">Pincode</label>
+                            <input asp-for="Customers.Customer_Pincode" id="Customer_Pincode" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_Pincode" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Customer_Landmark" class="form-label">Landmark</label>
+                            <input asp-for="Customers.Customer_Landmark" id="Customer_Landmark" class="form-control" required />
+                            <span asp-validation-for="Customers.Customer_Landmark" class="text-danger"></span>
+                        </div>
+                        <input type="hidden" asp-for="Customers.Customer_Id" />
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-100" asp-page-handler="Signup">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

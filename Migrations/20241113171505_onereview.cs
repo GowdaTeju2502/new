@@ -5,7 +5,7 @@
 namespace E_commerce.Migrations
 {
     /// <inheritdoc />
-    public partial class i : Migration
+    public partial class onereview : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

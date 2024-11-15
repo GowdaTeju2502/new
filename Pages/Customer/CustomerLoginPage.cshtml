@@ -1,0 +1,124 @@
+﻿@page
+@model E_commerce.Database.CustomerLoginPageModel
+
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%; border-radius: 10px;">
+        <div class="card-header text-center bg-primary text-white rounded-top">
+            <h3>Login</h3>
+        </div>
+        <div class="card-body">
+            @* Display error message if login fails *@
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger">
+                    @Model.ErrorMessage
+                </div>
+            }
+
+            <form method="post">
+                <div class="form-group mb-3">
+                    <label asp-for="Email" class="col-form-label">Email or Phone Number</label>
+                    <input asp-for="Email" class="form-control" type="email" placeholder="Enter your email" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Password" class="col-form-label">Password</label>
+                    <input asp-for="Password" class="form-control" type="password" placeholder="Enter your password" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <small>Forgot your password? <a href="#">Reset it here</a></small>
+        </div>
+
+        <div class="text-center mt-3">
+            <hr />
+            <small>New to ನಮ್ಮಂಗಡಿ?</small><br />
+            <a href="/Customer/CustomerRegisterPage" class="btn btn-secondary btn-sm">Create New Account</a>
+        </div>
+    </div>
+</div>
+
+<!-- Optional Custom Styles -->
+<style>
+    /* Card Styling */
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    /* Background and Card Shadows */
+    .card-header {
+        background-color: #007bff;
+        color: white;
+        border-radius: 15px 15px 0 0;
+        font-weight: 600;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: all 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        transition: all 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    /* Footer Links Styling */
+    .card-footer a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .card-footer a:hover {
+            text-decoration: underline;
+        }
+
+    /* Form Input Styling */
+    .form-control {
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .form-group mb-3 {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Text Styling */
+    .text-danger {
+        font-size: 0.875rem;
+    }
+
+    /* Footer Bottom Styling */
+    .text-center {
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+        .text-center small {
+            color: #007bff;
+        }
+
+    hr {
+        border-color: #f1f1f1;
+    }
+</style>

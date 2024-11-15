@@ -1,10 +1,209 @@
-﻿@page
-@model IndexModel
+﻿ @page
+ @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row">
+        <!-- First Card with 4 Images -->
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>Electronics for your home | upto 55% off</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/AirConditioners.jpg" class="img-fluid" alt="Air Conditioners">
+                            <p>Air Conditioners</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/Microwave.jpg" class="img-fluid" alt="Microwave">
+                            <p>Microwave</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/Refrigerators.jpg" class="img-fluid" alt="Refrigerators">
+                            <p>Refrigerators</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/Washing Machine.jpg" href="/Seller/SellerProducts" class="img-fluid" alt="Washing Machine">
+                            <p>Washing Machine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>Styles for Women| upto 60% off</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card21.png" class="img-fluid" alt="Women's Clothing">
+                            <p>Women's Clothing</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card22.png" class="img-fluid" alt="Footwear+Handbags">
+                            <p>Footwear+Handbags</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card23.png" class="img-fluid" alt="Watches">
+                            <p>Watches</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card24.png" href="/Seller/SellerProducts" class="img-fluid" alt="Jewellery">
+                            <p>Jewellery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Card with 4 Images -->
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4> Home Essentials | upto 75% off </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card31.jpg" class="img-fluid" alt="Bedsheets">
+                            <p>Bedsheets</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card3.jpg" class="img-fluid" alt="Curtains">
+                            <p>Curtains</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card33.jpg" class="img-fluid" alt="Ironing">
+                            <p>Ironing</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card34.jpg" class="img-fluid" alt="Home Decor">
+                            <p>Home Decor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>Headphones| upto 60% off</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card41.jpg" class="img-fluid" alt="Boult">
+                            <p>Boult</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card42.jpg" class="img-fluid" alt="Boat">
+                            <p>Boat</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card43.jpg" class="img-fluid" alt="Noise">
+                            <p>Noise</p>
+                        </div>
+                        <div class="col-3 mb-3 text-center">
+                            <img src="~/upload/card44.jpg" href="/Seller/SellerProducts" class="img-fluid" alt="Zebronics">
+                            <p>Zebronics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+@* styling*@
+<style>
+
+    /* Container Styling */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Title Styling */
+    h1 {
+        font-size: 2.5rem;
+        color: #ecf0f1; /* Light text color */
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    /* Category Row Styling (Flexbox) */
+    .category-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* Space between columns */
+    }
+
+    /* Category Column Styling */
+    .category-column {
+        flex: 1; /* Equal width for both columns */
+        background-color: #34495e;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+        /* Section Heading */
+        .category-column h2 {
+            color: #f39c12; /* Bright yellow color for the section titles */
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    /* Card Styling */
+    .card {
+        background-color: #ecf0f1;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        /* Card Hover Effects */
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Card Image Styling */
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Card Title and Price Styling */
+        .card h3 {
+            font-size: 1.3rem;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+</style>
+
+
+
+
+

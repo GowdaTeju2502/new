@@ -1,0 +1,101 @@
+﻿@page
+@model E_commerce.Database.Entity.SellerRegistrationModel
+@{
+
+}
+<h4> Thisis seller registration page</h4>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="text-center text-danger mb-4">Registration</h3>
+
+                    <form method="post">
+@*                          <div class="mb-3">
+                             <label for="Seller_Id" class="form-label">Seller ID</label>
+                             <input asp-for="Sellers.Seller_Id" id="Seller_Id" class="form-control" required />
+                             <span asp-validation-for="Sellers.Seller_Id" class="text-danger"></span>
+                         </div> *@
+
+                        <div class="mb-3">
+                            <label for="Seller_Name" class="form-label">Seller Name</label>
+                            <input asp-for="Sellers.Seller_Name" id="Seller_Name" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_Contact" class="form-label">Contact</label>
+                            <input asp-for="Sellers.Seller_Contact" id="Seller_Contact" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_Contact" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_Address" class="form-label">Address</label>
+                            <input asp-for="Sellers.Seller_Address" id="Seller_Address" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_Address" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_Email" class="form-label">Email</label>
+                            <input asp-for="Sellers.Seller_Email" id="Seller_Email" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_Gender" class="form-label">Gender</label>
+                            <select asp-for="Sellers.Seller_Gender" class="form-select">
+                                <option value="">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <span asp-validation-for="Sellers.Seller_Gender" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_DOB" class="form-label">Date of Birth</label>
+                            <input asp-for="Sellers.Seller_DOB" id="Seller_DOB" type="date" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_DOB" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_Password" class="form-label">Password</label>
+                            <input asp-for="Sellers.Seller_Password" id="Seller_Password" type="password" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_ConfirmPassword" class="form-label">Confirm Password</label>
+                            <input asp-for="Sellers.Seller_ConfirmPassword" id="Seller_ConfirmPassword" type="password" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_State" class="form-label">State</label>
+                            <input asp-for="Sellers.Seller_State" id="Seller_State" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_State" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_District" class="form-label">District</label>
+                            <input asp-for="Sellers.Seller_District" id="Seller_District" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_District" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Seller_Pincode" class="form-label">Pincode</label>
+                            <input asp-for="Sellers.Seller_Pincode" id="Seller_Pincode" class="form-control" required />
+                            <span asp-validation-for="Sellers.Seller_Pincode" class="text-danger"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

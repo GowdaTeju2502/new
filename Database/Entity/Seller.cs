@@ -38,6 +38,8 @@ namespace E_commerce.Database.Entity
         [Required]
 
         public int Seller_isactive { get; set; } = 1;
-              
+        public bool IsApproved { get; set; }=false;
+
+        //public List<Electronic_Product> Electronics { get; set; }
     }
 }

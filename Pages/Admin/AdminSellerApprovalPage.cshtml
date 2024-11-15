@@ -1,0 +1,106 @@
+﻿@page
+@model E_commerce.Database.Entity.AdminSellerApprovalPageModel;
+@{
+}
+
+
+<h3>Pending Seller Approvals</h3>
+
+@if (Model.PendingSellers != null && Model.PendingSellers.Count>=0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Seller Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var seller in Model.PendingSellers)
+            {
+                <tr>
+                    <td>@seller.Seller_Name</td>
+                    <td>@seller.Seller_Contact</td>
+                    <td>@seller.Seller_Email</td>
+                    <td>
+                        <!-- View Details Button (Opens the seller details form) -->
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#sellerDetailsModal_@seller.Seller_Id" class="btn btn-info">View Details</a>
+                    </td>
+                </tr>
+
+                <!-- Modal to display seller details -->
+                <div class="modal fade" id="sellerDetailsModal_@seller.Seller_Id" tabindex="-1" aria-labelledby="sellerDetailsLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="sellerDetailsLabel">Seller Details: @seller.Seller_Name</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_Name" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Contact</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_Contact" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" value="@seller.Seller_Email" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Address</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_Address" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Gender</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_Gender" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Date of Birth</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_DOB" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">State</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_State" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">District</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_District" readonly />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Pincode</label>
+                                        <input type="text" class="form-control" value="@seller.Seller_Pincode" readonly />
+                                    </div>
+                                </form>
+
+                                    <!-- Approve or Deny Buttons -->
+                                    <div class="mb-3">
+                                        <form method="post" asp-page-handler="Approve" asp-route-sellerId="@seller.Seller_Id" asp-route-status="1">
+                                            <button type="submit" class="btn btn-success w-100">Approve</button>
+                                        </form>
+                                    </div>
+                             
+                                    <div class="mb-3">
+                                        <form method="post" asp-page-handler="Deny" asp-route-sellerId="@seller.Seller_Id" asp-route-status="0">
+                                            <button type="submit" class="btn btn-danger w-100">Deny</button>
+                                        </form>
+                                    </div>
+                                    
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>
+}
+else 
+{
+    <p>No pending approvals</p>
+}

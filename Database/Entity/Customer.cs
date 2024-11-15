@@ -55,5 +55,6 @@ namespace E_commerce.Database.Entity
 
         [Required]
         public int Customer_IsActive { get; set; } = 1;
+        //public Review Reviews { get; set; }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\E_commerce\\E_commerce.csproj": {}
+    "D:\\ECommerce\\E_commerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\E_commerce\\E_commerce.csproj": {
+    "D:\\ECommerce\\E_commerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\E_commerce\\E_commerce.csproj",
+        "projectUniqueName": "D:\\ECommerce\\E_commerce.csproj",
         "projectName": "E_commerce",
-        "projectPath": "C:\\Users\\user\\source\\repos\\E_commerce\\E_commerce.csproj",
+        "projectPath": "D:\\ECommerce\\E_commerce.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\E_commerce\\obj\\",
+        "outputPath": "D:\\ECommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,6 +61,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -82,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
